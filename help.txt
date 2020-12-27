@@ -1,0 +1,2 @@
+A test file for reading helper's file text
+Jim
