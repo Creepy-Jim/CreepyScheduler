@@ -9,6 +9,9 @@ import os
 # And the func for checking the presence of files
 # need to be caegorised in to one func, I think.
 
+# Arg_handle: the argument handle. For detecting the length of the arguments,
+# and calling necessary functions, if specified in the parameters.
+
 
 class arg_handle():
     def arg_err(self, arg):
@@ -26,14 +29,50 @@ class arg_handle():
         elif arg == 'form':
             help()
 
+# process_initialize: Something to do before starting the program.
+# this part may be removed as I'm trying to directly induce the
+# file directory by using parameters.
+
 
 class process_initialize():
-    def fileattacher(self):  # 'attach' files
+    def inireader(self):
+        
+
+    # read .ini files, by a standard, if exists. 
+
+
+    def iniasker(self):
+        loopindicator = True
+        iniask = str(input(".ini config file not exists. Would you"
+                           "like to create a new one? (y/n)"))
+        while loopindicator = True:
+            if iniask == 'Yes' or iniask == 'y':
+                try:
+                    filecreator('creesche_config.ini')
+                    
+            elif iniask == 'No' or iniask == 'n':
+                print("As the configration file not found, "
+                      "please use the software under non-config file"
+                      " mode. (csche noini <filename>). Refer to helper files"
+                      "for further information."
+                exit()
+            else:
+                print("Please type either Yes/No or y/n.")
+
+    def tempfileattacher(self):
         print("The current working directory is: ", os.getcwd())
         filename = str(input("Input the name of database: (.txt)"))
         # currently support txt files only, may change to sqlite
         return filename
         pass
+    # 'attach' files, if the .ini file DNE, unless user specified.
+
+
+# file_operation: Hand over requests and write or read data
+# according to the requests.
+
+class config():
+    def ini_config(self,filename):
 
 
 class file_operation():
@@ -48,6 +87,9 @@ class file_operation():
         filewrite = open(filename, "a")
         print("Writing ")
         filewrite.close()
+
+
+# filecheck: To check the validity of the files. Currently it has little use.
 
 
 class filecheck():
@@ -80,6 +122,8 @@ def filecreator():  # Create file if user necessary:
     else:
         print("The file will not be created.")
     pass
+# filecreator: To create files directly in the program.
+# It need to be improved and adapted.
 
 
 def help():
@@ -108,5 +152,5 @@ exc_pros = exc()
 arg_oper.argchecker(arg)
 arg_oper.argchecker(arg[1])
 '''
-database_name=pros.fileattacher()
+database_name=pros.tempfileattacher()
 filereader(database_name)'''
