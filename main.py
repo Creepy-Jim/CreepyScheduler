@@ -1,5 +1,6 @@
 import sys
 import os
+import configparser
 # def nociter(currentmode)
 # to notify user that they are writing files/databases,
 # may used for nofitying users about the typ of databases or.ini files later
@@ -38,8 +39,8 @@ class process_initialize():
     def inireader(self):
         
 
-    # read .ini files, by a standard, if exists. 
-
+    # read .ini files, by a standard, if exists.
+    # use configparser
 
     def iniasker(self):
         loopindicator = True
