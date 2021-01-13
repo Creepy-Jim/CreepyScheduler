@@ -68,7 +68,6 @@ class process_initialize():
         pass
     # 'attach' files, if the .ini file DNE, unless user specified.
 
-
 # file_operation: Hand over requests and write or read data
 # according to the requests.
 
