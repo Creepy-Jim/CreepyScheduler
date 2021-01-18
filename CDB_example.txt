@@ -1,0 +1,20 @@
+{
+SI 01
+TT Test
+CT 20210114 102500 GMT+8
+ST 20210115 102500 GMT+8
+FT NA
+CM 'Test coming!'
+FI 01
+}
+
+# SI: Start of information
+  FI: End of information
+  CT: Creating time
+  FT: Finishing time (NA if not finished)
+  ST: Scheduled finishing time (NA if not specified)
+  CM: Comments
+  TT: Title
+  { : Start of database
+  } : End of database
+  

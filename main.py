@@ -27,7 +27,7 @@ def argchecker(arg):
         elif arg == 'form':
             help()
         elif arg == '--dir':
-            os.chdir(arg[counter+1])
+            os.chdir(arg[counter+1]) # Suggest if user add directories after --dir statement
 #        elif arg == 'add':
 #            arg[counter+1]
 #        elif arg == 'finish':
