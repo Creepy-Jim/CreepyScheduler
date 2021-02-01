@@ -1,5 +1,6 @@
 import sys
 import os
+import json
 
 # You may notice that now the method for handling file names' messy
 # --I will use .ini config in next ver
@@ -18,7 +19,7 @@ def arg_err(arg):
     exit()
     pass
 
-# May be I should refine the arg_err checker? 
+# May be I should refine the arg_err checker?
 
 def argchecker(arg):
     for counter in arg:
@@ -26,7 +27,7 @@ def argchecker(arg):
             help()
         elif arg == 'form':
             help()
-        elif arg == '--dir':
+        elif arg == '--directory' or arg == "-d" :
             os.chdir(arg[counter+1]) # Suggest if user add directories after --dir statement
 #        elif arg == 'add':
 #            arg[counter+1]
@@ -35,7 +36,7 @@ def argchecker(arg):
 #        elif arg == 'list':
 
 
-##file attachment
+# file attachment
 def tempfileattacher():
     print("The current working directory is: ", os.getcwd())
     # currently support txt files only, may change to sqlite
@@ -44,15 +45,19 @@ def tempfileattacher():
 # file_operation: Hand over requests and write or read data
 # according to the requests.
 
-def filereader(filename):
+
+def textreader(filename):
     fileread = open(filename, "r")
     for counter in fileread:
         print(counter.strip())
     fileread.close()
 
-def filewriter(filename, operation_name):
+
+def jsonwriter(filename, operation_name, indent_length):
     filewrite = open(filename, "a")
+    json.dump("Apple", indent_length)
     filewrite.close()
+
 
 def filecreator(filename):  # Create file if user necessary:
     filecreate = open(filename, "x")
@@ -65,10 +70,10 @@ def filecreator(filename):  # Create file if user necessary:
 
 def help():
     try:
-        file_oper.filereader("help.txt")
+        textreader("help.txt")
         print("reading files")
     except(Exception):
-        exc_pros.exception_handle(sys.exc_info)
+        exception_handle(sys.exc_info)
 # open a file and output all guts it have
 
 
@@ -76,10 +81,12 @@ def exception_handle(exc_code):
     print("I'm sorry, but there is a problem: ", exc_code)
     exit()
 
-#Major part of the program
+# Major part of the program
+
+
 print('Welcome to the Creepy Scheduler 0.0.1, by Jim.')
-fname = "CDB.txt"
-if (os.path.exists(fname)) == False:
+fname = "database.json"  # Use this name by default
+if (os.path.exists(fname)) is False:
     filecreator(fname)
 tempfileattacher()
 argchecker(sys.argv)
